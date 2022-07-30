@@ -137,9 +137,9 @@ public class ConfigManager {
             Gson gson = new Gson();
 
 
-            Map<?, ?> map = gson.fromJson(bufferedReader, Map.class);
+            // Map<?, ?> map = gson.fromJson(bufferedReader, Map.class);
 
-            Map<String, Map<String, Object>> configs = ((Map<String, Map<String, Object>>)map.get("config"));
+            // Map<String, Map<String, Object>> configs = ((Map<String, Map<String, Object>>)map.get("config"));
 
             configs.forEach((moduleName, settings) -> {
                 Module m = Raven.client.getModuleManager().getModuleByName(moduleName);
