@@ -28,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: amobplus
-          path: build/libs/
+          path: build/libs/AmoB+-lmao.jar
