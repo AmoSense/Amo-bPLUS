@@ -17,8 +17,8 @@ public class ConfigManager {
     // File management
     private final File clientDir = new File(Raven.client.getMc().mcDataDir + File.separator + "raven");
     private final File configDir = new File(clientDir.getPath() + File.separator + "configs"); // todo: make sure that his bs does not give an errrops
-    private final String configFileType = "bplus";
-    private final String settingFileType = "raven";
+    private final String configFileType = "json";
+    private final String settingFileType = "amo";
 
     // Settings for the client in general
     private String apiKey;
@@ -137,9 +137,9 @@ public class ConfigManager {
             Gson gson = new Gson();
 
 
-            // Map<?, ?> map = gson.fromJson(bufferedReader, Map.class);
+            Map<?, ?> map = gson.fromJson(bufferedReader, Map.class);
 
-            // Map<String, Map<String, Object>> configs = ((Map<String, Map<String, Object>>)map.get("config"));
+            Map<String, Map<String, Object>> configs = ((Map<String, Map<String, Object>>)map.get("config"));
 
             configs.forEach((moduleName, settings) -> {
                 Module m = Raven.client.getModuleManager().getModuleByName(moduleName);
@@ -151,8 +151,6 @@ public class ConfigManager {
             e.printStackTrace();
             System.err.println("Config load exception, loading default...");
             createDefaultConfig();
-            saveConfig();
-            applyConfig(findConfigs().get("default").get(0));
         }
     }
 
